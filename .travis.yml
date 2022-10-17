@@ -1,0 +1,10 @@
+sudo: required
+services: 
+  - docker
+
+before_install: 
+  - docker build -t docker-compose -f Dockerfile.prod .
+
+script:
+  - docker run docker-compose npm run test -- --coverage
+  
